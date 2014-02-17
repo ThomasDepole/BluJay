@@ -4,16 +4,16 @@ include 'config.php';
 
 
 if(!isset($theme)){
-	 $theme_base = "site_theme"; // this can be modified by a function in the functions file
-}else{
-	$theme_base = $theme;	
+	 $theme_base = "site_theme"; //If $theme isn't defined in the config
+}else if(!isset($theme_base)){
+	$theme_base = $theme;	     //$theme_base could by dynamical set before
 }
 
 
 $theme_url = $site_url . "/" . $theme_base;
 $site_root = $_SERVER["DOCUMENT_ROOT"];
 
-define('site_url', $site_root);
+define('site_url', $site_url);
 define('site_theme_url', $theme_url);
 
 error_reporting(E_ALL ^ E_NOTICE);
