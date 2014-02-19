@@ -1,12 +1,13 @@
 <?php
-$enable['ezSQL'] = true;
+$enable['ezSQL'] = false;
 $enable['user_auth'] = false;
+$enable['dev_tools'] = false;
 
-$db_auth['host'] = "vitoproduction.com";
-$db_auth['database'] = "tdepole_cody";
-$db_auth['user'] = "tdepole_cody";
-$db_auth['pass'] = "c0dyray";
+$db_auth['host'] = "localhost";
+$db_auth['database'] = "";
+$db_auth['user'] = "";
+$db_auth['pass'] = "";
 
-$site_name = "A Plus Php";
-$site_url = "http://localhost:1010/apluscode";
+$site_name = "BluJay";
+$site_url = "http://localhost:1010/bluejay";
 ?>
