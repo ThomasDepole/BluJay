@@ -18,7 +18,7 @@ else{
             $directory = $directory . "/" . $request[$count];
         }
 
-        if(file_exists($directory . '/' . $request[$i] .  '.php' )){
+        if(isset($request[$i]) && file_exists($directory . '/' . $request[$i] .  '.php' )){
             $base_url = $directory . '/' . $request[$i] .  '.php';
             break;
         }

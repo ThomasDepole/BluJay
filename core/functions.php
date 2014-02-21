@@ -110,12 +110,24 @@ function get_404(){
 
 function get_url_variable($urlIndex){
 	global $url_vars;
-	return $url_vars[$urlIndex];
+    if(isset($url_vars[$urlIndex])){
+        return $url_vars[$urlIndex];
+    }else{
+        return null;
+    }
+
 }	
 
 function alter_theme_url_parameter($key){
     global $theme_base;
     if(isset($_GET[$key]))  $theme_base = $_GET[$key];
+}
+
+function redirect($location){
+    global $site_url;
+
+    header( 'Location: ' . $site_url . $location );
+    die();
 }
 
 ?>
