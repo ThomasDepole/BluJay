@@ -1,4 +1,5 @@
 <?php
+echo $_SERVER['QUERY_STRING'];
 $request = explode("/", $_SERVER['QUERY_STRING']);
 substr($_SERVER['QUERY_STRING'], 1);
 

@@ -9,5 +9,5 @@ $db_auth['user'] = "";
 $db_auth['pass'] = "";
 
 $site_name = "BluJay";
-$site_url = "http://localhost:1010/bluejay";
+$site_url = "http://localhost:1010/blujayGithub";
 ?>
