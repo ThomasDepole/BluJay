@@ -1,5 +1,4 @@
 <?php
-//include "config.php";
 
 function get_header(){
     global $theme_base;
@@ -128,6 +127,36 @@ function redirect($location){
 
     header( 'Location: ' . $site_url . $location );
     die();
+}
+
+// Layout Functions
+function Title($titleName = null){
+    if($titleName == null){
+        if(BluJay::$SiteTitle == null)
+            echo BluJay::$SiteName;
+        else
+            echo BluJay::$SiteTitle;
+        return;
+    }
+
+    BluJay::$SiteTitle = $titleName;
+}
+
+function RenderBody(){
+    echo BluJay::$SiteBody;
+}
+
+function RenderLayout($bodyLocation){
+    BluJay::$SiteBodyLocation = $bodyLocation;
+
+    //Used the output buffer to include the contents of the body file, but store the output in a variable to echoed later
+    ob_start(); //start buffering
+    include BluJay::$SiteBodyLocation; //include the file
+    BluJay::$SiteBody = ob_get_contents(); //add the contents of the buffer aka the body into a varible
+    ob_end_clean(); //remove anything outputted so the body's html won't render before the layout, but the functions and php $varibles will
+
+
+    include BluJay::$SiteBase . "/layout.php";
 }
 
 ?>

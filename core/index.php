@@ -2,12 +2,19 @@
 include 'core/Enums/ConfigEnums.php';
 include 'core/functions.php';
 include 'config.php';
+include 'BluJay.php';
+
+BluJay::$SiteName = $site_name;
 
 // Set up Global Variables
 if(!isset($theme))
     $theme_base = "site"; //If $theme isn't defined in the config
 else if(!isset($theme_base))
     $theme_base = $theme;	     //$theme_base could by dynamical set before
+
+//TODO move all references of $theme_base to this
+BluJay::$SiteBase = $theme_base;
+
 if(!isset($site_routing))
     $site_routing = SiteRoutingType::Wordpress;
 
@@ -39,7 +46,7 @@ if(isset($enable['dev_tools']) && $enable['dev_tools'] == true){
 
 
 //Determine What Type of Routing Method To Use
-if($site_routing == SiteRoutingType::Wordpress){
+if($site_routing == SiteRoutingType::Wordpress || $site_routing == SiteRoutingType::Layout){
     $theme_url = $site_url . "/" . $theme_base;
     $site_root = $_SERVER["DOCUMENT_ROOT"];
     define('site_url', $site_url);
@@ -48,18 +55,6 @@ if($site_routing == SiteRoutingType::Wordpress){
     return;
 }
 
-if($site_routing == SiteRoutingType::Layout){
-    //not yet
-    echo("Layout Routing isn't supported yet");
-    return;
-
-    $theme_url = $site_url . "/" . $theme_base;
-    $site_root = $_SERVER["DOCUMENT_ROOT"];
-    define('site_url', $site_url);
-    define('site_theme_url', $theme_url);
-    include 'core/RouteDirector.php';
-    return;
-}
 if($site_routing == SiteRoutingType::MVC){
     echo("MVC Not Supported Yet");
     return;

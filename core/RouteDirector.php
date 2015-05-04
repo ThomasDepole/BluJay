@@ -39,7 +39,11 @@ for($i = 0; $i < count($request); ++$i) {
 
 
 if(file_exists($base_url))
-    include $base_url;
+    if($site_routing == SiteRoutingType::Layout)
+        RenderLayout($base_url);
+    else
+        include $base_url;
+
 else get_404();
 
 ?>
