@@ -30,7 +30,7 @@ if(isset($enable['ezSQL']) && $enable['ezSQL'] == true){
 
     // Initialise database object and establish a connection
     // at the same time - db_user / db_password / db_name / db_host
-    $db = new ezSQL_mysql($db_auth['user'],$db_auth['pass'],$db_auth['database'],$db_auth['host']);
+    BluJay::$db = new ezSQL_mysql($db_auth['user'],$db_auth['pass'],$db_auth['database'],$db_auth['host']);
 }
 
 if(isset($enable['user_auth']) && $enable['user_auth'] == true){

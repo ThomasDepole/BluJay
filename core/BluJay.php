@@ -12,5 +12,5 @@ class BluJay {
     public static $SiteBase;
     public static $SiteTitle;
     public static $SiteName;
-
+    public static $db;
 }
